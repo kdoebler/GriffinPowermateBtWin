@@ -1,0 +1,1 @@
+C:\Users\doeblerke01\Downloads\Bluetooth_Low_Energy_sample\cs\BluetoothLE.csproj;x86
