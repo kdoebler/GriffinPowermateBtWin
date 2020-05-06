@@ -466,7 +466,27 @@ namespace SDKTemplate
             // Rotate Right While Pressed - 112
             // Rotate Left While Pressed - 105
 
-          
+            switch (btData)
+            {
+                case "101":
+                    return "Pressed";
+                    break;
+                case "104":
+                    return "Rotate Right";
+                    break;
+                case "103":
+                    return "Rotate Left";
+                    break;
+                case "112":
+                    return "Rotate Right While Pressed";
+                    break;
+                case "105":
+                    return "Rotate Left While Pressed";
+                    break;
+                default:
+                    return "unknown";
+                    break;
+            }
 
             if (format != null)
             {
