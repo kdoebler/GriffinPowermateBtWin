@@ -11,6 +11,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Bluetooth;
@@ -450,6 +453,22 @@ namespace SDKTemplate
                 () => CharacteristicLatestValue.Text = message);
         }
 
+        // import the function in your class
+        [DllImport("User32.dll")]
+        static extern int SetForegroundWindow(IntPtr point);
+
+
+        private void sk()
+        {
+            Process p = Process.GetProcessesByName("notepad")[0];
+            if (p != null)
+            {
+                IntPtr h = p.SafeHandle.DangerousGetHandle();
+                SetForegroundWindow(h);
+                //SendKeys.SendWait("k");
+            }
+        }
+
         private string FormatValueByPresentation(IBuffer buffer, GattPresentationFormat format)
         {
             // BT_Code: For the purpose of this sample, this function converts only UInt32 and
@@ -469,6 +488,7 @@ namespace SDKTemplate
             switch (btData)
             {
                 case "101":
+                    sk();
                     return "Pressed";
                     break;
                 case "104":
